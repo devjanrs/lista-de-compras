@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="shortcut icon" href="lista.ico" type="image/x-icon">
+        <title>Lista de compras</title>
+    </head>
+
+    <body>
+        
+        <main id="app">
+            
+            <section class="todo-list">
+                
+                
+                <h3>Lista de compras <i class="bi bi-basket"></i></h3>
+                
+                <div class="all-todos">
+                    <div 
+                    v-for="tarefa in tarefas"
+                    class="single-todo"
+                    :class="{done : tarefa.status}"
+                    @click="tarefa.status = !tarefa.status"
+                    >
+                        <p>{{tarefa.texto}}</p>
+                    </div>
+                </div>
+
+                <button class="clear" @click="tarefas=[]" v-if="tarefas.length">Limpar tudo</button>
+
+                <input type="text" placeholder="Escreva uma novo item..." v-model="novaTarefa.texto">
+                <button class="add" @click="addTarefa()">Adicionar</button>
+
+                <div class="instructions">
+                    Instruções:
+                    <ul>
+                        <li>Clique no texto do item para alternar entre ok / não ok</li>
+                        <li>Use o botão limpar tudo para remover todos os itens</li>
+                        <li>Use o botão "adicionar" para adicionar novos itens</li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="scripts.js"></script>
+    </body>
+
+</html>
